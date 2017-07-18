@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Releaseplanning</title>
+        <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/6.0.6/css/aui.min.css" media="all">
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/421944b5b0f7f2857369f55055d5f112-CDN/en_USi96pjh/64026/264/266/_/download/superbatch/css/batch.css" media="all">
+        <!--[if lte IE 9]>
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/fb42f84303714bf60320c81af2d0859b-CDN/en_USi96pjh/64026/264/266/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+        <![endif]-->
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/92736a7dc48f48076d2f924a10d12afc-CDN/en_USi96pjh/64026/264/a073ea702df84cffb1e9e387d334bcd9/_/download/contextbatch/css/greenhopper-rapid-non-gadget,gh-rapid,atl.general,jira.project.sidebar,jira.global,jira.general/batch.css?agile_global_admin_condition=true&amp;jag=true&amp;jag_disabled_marketing=true&amp;tempo_is_tempo_timesheets_license_valid=true&amp;tempo_is_jira_version_equal_or_greater_than_7.0.0=false&amp;tempo_is_tempo_core_licensed=true&amp;hc-enabled=true" media="all">
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/b0dc0dd75f57c0c62e57b819f0fa00e6-CDN/en_USi96pjh/64026/264/2ddf032603d36732237213a62e1d0789/_/download/contextbatch/css/gh-rapid-charts/batch.css" media="all">
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_USi96pjh/64026/264/1.7.6_63/_/download/batch/com.tngtech.jira.plugins.issueprinter:issuePrinterForJiraAgile/com.tngtech.jira.plugins.issueprinter:issuePrinterForJiraAgile.css" media="all">
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_USi96pjh/64026/264/3.0.4/_/download/batch/com.tempoplugin.tempo-core:tempo-core/com.tempoplugin.tempo-core:tempo-core.css" media="all">
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/2fa1b0582c97a84f33658995fd76ce00-CDN/en_USi96pjh/64026/264/5.7.31/_/download/batch/com.atlassian.auiplugin:aui-date-picker/com.atlassian.auiplugin:aui-date-picker.css" media="all">
+        <link type="text/css" rel="stylesheet" href="//ticket.ecx.io/s/d41d8cd98f00b204e9800998ecf8427e-T/en_USi96pjh/64026/264/3.0.4/_/download/batch/com.tempoplugin.tempo-core:core-issue-expense-resource/com.tempoplugin.tempo-core:core-issue-expense-resource.css" media="all">
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="//aui-cdn.atlassian.com/aui-adg/6.0.6/js/aui.min.js"></script>
+        <script src="//aui-cdn.atlassian.com/aui-adg/6.0.6/js/aui-experimental.min.js"></script>
+        <script src="//aui-cdn.atlassian.com/aui-adg/6.0.6/js/aui-datepicker.min.js"></script>
+        <script src="//aui-cdn.atlassian.com/aui-adg/6.0.6/js/aui-soy.min.js"></script>
+    </head>
+    <body>
+
+        <nav class="aui-header aui-dropdown2-trigger-group" role="navigation">
+            <div class="aui-header-inner">
+                <div class="aui-header-before"><a class=" aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher"
+                                                  aria-controls="app-switcher" aria-haspopup="true" data-aui-trigger
+                                                  href="#app-switcher"><span
+                            class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a>
+                    <div id="app-switcher" class="aui-dropdown2 aui-style-default">
+                        <div class="app-switcher-loading">Loading&hellip;</div>
+                    </div>
+                    <script>
+                        (function (NL) {
+                            var initialise = function () {
+                                // For some milestones of AUI, the atlassian soy namespace was renamed to aui. Handle that here by ensuring that window.atlassian is defined.
+                                window.atlassian = window.atlassian || window.aui;
+                                new NL.AppSwitcher({
+                                    dropdownContents: '#app-switcher'
+                                });
+                            };
+                            if (NL.AppSwitcher) {
+                                initialise();
+                            } else {
+                                NL.onInit = initialise;
+                            }
+                        }(window.NL = (window.NL || {})));
+                        window.NL.environment = {isUserAdmin: false, isAppSuggestionAvailable: false};</script>
+                </div>
+                <div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a
+                            href="https://ticket.ecx.io/secure/MyJiraHome.jspa"><img
+                                src="https://ticket.ecx.io/s/en_USi96pjh/64026/264/_/jira-logo-scaled.png" alt="Jira"/></a></h1>
+                    <ul class='aui-nav'>
+
+
+                        <li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger "
+                               href="https://ticket.ecx.io/secure/Dashboard.jspa" id="home_link" accessKey="d"
+                               title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a>
+                            <div id="home_link-content" class="aui-dropdown2 aui-style-default"
+                                 data-aui-dropdown2-ajax-key="home_link"></div>
+                        </li>
+                        <li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger "
+                               href="https://ticket.ecx.io/browse/HTLGR" id="browse_link" accessKey="p"
+                               title="View recent projects and browse a list of projects" aria-haspopup="true"
+                               aria-owns="browse_link-content">Projects</a>
+                            <div id="browse_link-content" class="aui-dropdown2 aui-style-default"
+                                 data-aui-dropdown2-ajax-key="browse_link"></div>
+                        </li>
+                        <li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://ticket.ecx.io/issues/"
+                               id="find_link" accessKey="i" title="Search for issues and view recent issues"
+                               aria-haspopup="true" aria-owns="find_link-content">Issues</a>
+                            <div id="find_link-content" class="aui-dropdown2 aui-style-default"
+                                 data-aui-dropdown2-ajax-key="find_link"></div>
+                        </li>
+                        <li><a class="aui-nav-link aui-dropdown2-trigger " href="https://ticket.ecx.io/secure/TempoInfo.jspa" id="tempo_menu"
+                               title="Open Tempo Timesheet" aria-haspopup="true" aria-owns="tempo_menu-content">Tempo</a>
+                            <div id="tempo_menu-content" class="aui-dropdown2 aui-style-default">
+                                <div class="aui-dropdown2-section">
+                                    <ul id="tempo_menu_dropdown" class="aui-list-truncate ">
+                                        <li><a id="timesheet-mlink" class="   " title="View timesheets and log work"
+                                               href="https://ticket.ecx.io/secure/TempoUserBoard!timesheet.jspa">Timesheets</a></li>
+                                        <li><a id="tempo-bar-mlink" class=" tempo-bar-show  " title="Open the Tracker Bar"
+                                               href="https://ticket.ecx.io/secure/TempoUserBoard!timesheet.jspa">Tracker</a></li>
+                                    </ul>
+                                </div>
+                                <div class="aui-dropdown2-section"><strong>Planner</strong>
+                                    <ul id="tempo_planner" class="aui-list-truncate ">
+                                        <li><a id="program_" class=" " title="Go to Program Planning"
+                                               href="https://ticket.ecx.io/secure/ProgramPlanning.jspa">Program Planning</a></li>
+                                        <li><a id="team_" class=" " title="Go to Team Planning"
+                                               href="https://ticket.ecx.io/secure/TeamPlanning.jspa">Team Planning</a></li>
+                                    </ul>
+                                </div>
+                                <div class="aui-dropdown2-section"><strong>Teams</strong>
+                                    <ul id="tempo_team_menu" class="aui-list-truncate ">
+                                        <li><a id="tempo_teams_dropdown_item" class=" " title="All Teams"
+                                               href="https://ticket.ecx.io/secure/TempoTeams!default.jspa">more...</a></li>
+                                    </ul>
+                                </div>
+                                <div class="aui-dropdown2-section"><strong>Accounts</strong>
+                                    <ul id="accounts_v2_menu_dropdown" class="aui-list-truncate ">
+                                        <li><a id="accounts_more_lnk" class=" " title="All Accounts"
+                                               href="https://ticket.ecx.io/secure/TempoAccounts!default.jspa">more...</a></li>
+                                    </ul>
+                                </div>
+                                <div class="aui-dropdown2-section">
+                                    <ul id="tempo_menu_extra" class="aui-list-truncate ">
+                                        <li><a id="about-mlink" class=" tempoaction-open-large-form  "
+                                               title="Get Tempo version and license information" href="https://ticket.ecx.io/secure/AboutTempo.jspa">About
+                                                Tempo</a></li>
+                                        <li><a id="tempo-getting-started-link" class="   " title="Getting Started with Tempo"
+                                               href="https://ticket.ecx.io/secure/TempoGettingStarted.jspa">Getting Started</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger "
+                               href="https://ticket.ecx.io/secure/GreenHopper.jspa" id="greenhopper_menu" title="Manage your project with JIRA Agile"
+                               aria-haspopup="true" aria-owns="greenhopper_menu-content">Agile</a>
+                            <div id="greenhopper_menu-content" class="aui-dropdown2 aui-style-default"
+                                 data-aui-dropdown2-ajax-key="greenhopper_menu"></div>
+                        </li>
+                        <li id="create-menu"><a id="create_link" class="aui-button aui-button-primary aui-style create-issue "
+                                                title="Create a new issue / bug / feature request / etc"
+                                                href="https://ticket.ecx.io/secure/CreateIssue!default.jspa" accesskey="c">Create</a></li>
+                    </ul>
+                </div>
+                <div class="aui-header-secondary">
+                    <ul class='aui-nav'>
+                        <li>
+                            <form action="https://ticket.ecx.io/secure/QuickSearch.jspa" method="get" id="quicksearch"
+                                  class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+                                <input id="quickSearchInput" class="search" type="text" title="Search" placeholder="Search"
+                                       name="searchString" accessKey="q"/>
+                                <input type="submit" class="hidden" value="Search">
+                            </form>
+                        </li>
+
+
+                        <li id="system-help-menu">
+                            <a class="aui-nav-link aui-dropdown2-trigger" id="help_menu" aria-haspopup="true"
+                               aria-owns="system-help-menu-content"
+                               href="https://docs.atlassian.com/jira/docs-064/JIRA+Documentation"
+                               target="$textUtils.htmlEncode($rootHelpMenuItem.params.target)" title="Help"><span
+                                    class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+                            <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                                <div class="aui-dropdown2-section">
+                                    <ul id="jira-help" class="aui-list-truncate">
+                                        <li>
+                                            <a id="view_help" class="" title="Goto the online documentation for JIRA"
+                                               href="https://docs.atlassian.com/jira/docs-064/JIRA+Documentation"
+                                               target="_blank">Online Help</a>
+                                        </li>
+                                        <li>
+                                            <a id="gh_view_help" class="" title="Get help online for JIRA Agile"
+                                               href="http://docs.atlassian.com/agile/docs-067/JIRA+Agile+Documentation"
+                                               target="_blank">JIRA Agile Help</a>
+                                        </li>
+                                        <li>
+                                            <a id="keyshortscuthelp" class=""
+                                               title="Get more information about JIRA's Keyboard Shortcuts"
+                                               href="https://ticket.ecx.io/secure/ViewKeyboardShortcuts!default.jspa" target="_blank">Keyboard
+                                                Shortcuts</a>
+                                        </li>
+                                        <li>
+                                            <a id="view_about" class="" title="Get more information about JIRA"
+                                               href="https://ticket.ecx.io/secure/AboutPage.jspa">About JIRA</a>
+                                        </li>
+                                        <li>
+                                            <a id="view_credits" class="" title="See who did what"
+                                               href="https://ticket.ecx.io/secure/JiraCreditsPage!default.jspa" target="_blank">JIRA Credits</a>
+                                        </li>
+                                        <li>
+                                            <a id="tempo_core_help" class="" title="Goto the online documentation for Tempo"
+                                               href="https://tempoplugin.jira.com/wiki/display/TD/Tempo+Documentation"
+                                               target="_blank">Tempo Help</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li id="user-options">
+                            <a id="header-details-user-fullname" class="aui-dropdown2-trigger" aria-haspopup="true"
+                               aria-owns="user-options-content" data-username="alexander.perndorfer"
+                               data-displayname="Alexander Perndorfer" href="https://ticket.ecx.io/secure/ViewProfile.jspa"
+                               title="User profile for Alexander Perndorfer">
+                                <span class="aui-avatar aui-avatar-small">
+                                    <span class="aui-avatar-inner">
+                                        <img src="https://ticket.ecx.io/secure/useravatar?size=small&avatarId=10108"
+                                             alt="User profile for Alexander Perndorfer"/>
+                                    </span>
+                                </span>
+                            </a>
+                            <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                                <div class="aui-dropdown2-section">
+                                    <ul id="personal" class="aui-list-truncate">
+                                        <li>
+                                            <a id="view_profile" class="" title="View and change your details and preferences"
+                                               href="https://ticket.ecx.io/secure/ViewProfile.jspa">Profile</a>
+                                        </li>
+                                        <li>
+                                            <a id="upm-requests-link" class=""
+                                               href="https://ticket.ecx.io/plugins/servlet/upm/requests?source=header_user">Atlassian Marketplace</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="aui-dropdown2-section">
+                                    <strong>My JIRA Home</strong>
+                                    <ul id="set_my_jira_home" class="aui-list-truncate">
+
+                                        <li>
+                                            <a id="set_my_jira_home_default" class="aui-dropdown2-radio interactive checked    "
+                                               title="Set my JIRA Home to the Dashboard."
+                                               href="https://ticket.ecx.io/secure/UpdateMyJiraHome.jspa?target=com.atlassian.jira.jira-my-home-plugin%3Aset_my_jira_home_dashboard&atl_token=BJLG-R0NA-B3X6-MPWQ|43e72c921187cbe380533c1a45a7a2b30b199477|lin">Dashboard</a>
+                                        </li>
+
+                                        <li>
+                                            <a id="greenhopper-my-jira-home-set" class="aui-dropdown2-radio interactive    "
+                                               title="Set my JIRA Home to Agile."
+                                               href="https://ticket.ecx.io/secure/UpdateMyJiraHome.jspa?target=com.pyxis.greenhopper.jira%3Agreenhopper-my-jira-home-set-51&atl_token=BJLG-R0NA-B3X6-MPWQ|43e72c921187cbe380533c1a45a7a2b30b199477|lin">Agile</a>
+                                        </li>
+
+                                        <li>
+                                            <a id="set_my_jira_home_issuenav" class="aui-dropdown2-radio interactive    "
+                                               title="Set my JIRA Home to the Issue Navigator."
+                                               href="https://ticket.ecx.io/secure/UpdateMyJiraHome.jspa?target=com.atlassian.jira.jira-my-home-plugin%3Aset_my_jira_home_issue&atl_token=BJLG-R0NA-B3X6-MPWQ|43e72c921187cbe380533c1a45a7a2b30b199477|lin">Issue
+                                                Navigator</a>
+                                        </li>
+
+                                        <li>
+                                            <a id="set_tempo_my_jira_home_link" class="aui-dropdown2-radio interactive    "
+                                               title="Set my JIRA home to Tempo"
+                                               href="https://ticket.ecx.io/secure/UpdateMyJiraHome.jspa?target=is.origo.jira.tempo-plugin%3Atempo.jira.home.link&atl_token=BJLG-R0NA-B3X6-MPWQ|43e72c921187cbe380533c1a45a7a2b30b199477|lin">Tempo</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="aui-dropdown2-section">
+                                    <ul id="system" class="aui-list-truncate">
+                                        <li>
+                                            <a id="log_out" class="" title="Log out and cancel any automatic login."
+                                               href="https://ticket.ecx.io/logout?atl_token=BJLG-R0NA-B3X6-MPWQ|43e72c921187cbe380533c1a45a7a2b30b199477|lin">Log
+                                                Out</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- .aui-header-inner-->
+        </nav>
+        <form action="/createproject" method="get" class="aui">
+            <fieldset>
+                <div class="field-group">
+                    <label for="tb-projectname">Project Name<span class="aui-icon icon-required"> required</span></label>
+                    <input class="text" type="text" id="tb-projectname" name="tb-projectname" title="Project Name">
+                    <div class="description">Insert the project name here.</div>
+                </div>
+                <div class="field-group">
+                    <label for="tb-velocity">Velocity</label>
+                    <input type="number" min="0" value="0" id="tb-velocity" name="tb-velocity" title="Velocity">
+                </div>
+                <div class="field-group">
+                    <label for="d-fname">Short field</label>
+                    <input class="text short-field" type="text" id="d-fname" name="d-fname" title="first name">
+                    <div class="description">Short width input</div>
+                </div>
+                <div class="field-group">
+                    <label for="d-fname">Disabled field</label>
+                    <input class="text" type="text" id="d-fname" name="d-fname" title="first name" disabled>
+                    <div class="description">Disable field input</div>
+                </div>
+                <div class="field-group">
+                    <label for="email1">Email</label>
+                    <input class="text medium-field" type="text" id="email1" name="email" title="email" placeholder="you@example.com">
+                    <span class="aui-icon icon-help">help</span>
+                    <div class="description">Medium width input</div>
+                </div>
+                <div class="field-group">
+                    <label for="password1" accesskey="p">Password</label>
+                    <input class="password" type="password" id="password1" name="password" title="password">
+                </div>
+            </fieldset>
+        </form>
+    </body>
+</html>
